@@ -1,1180 +1,488 @@
+<html>
+<head>
+<title>Register</title>
+<script >
+    function validatePassword(password) {
+                
+                // Do not show anything when the length of password is zero.
+                if (password.length == 0) {
+                    document.getElementById("msg").innerHTML = "";
+                    return;
+                }
+                // Create an array and push all possible values that you want in password
+                var matchedCase = [/[$@$!%*#?&]/,/[a-z]/,/[0-9]/,/[A-Z]/]
+               // new Array();
+               // matchedCase.push("[$@$!%*#?&]"); // Special Charector
+               // matchedCase.push("[A-Z]");      // Uppercase Alpabates
+               // matchedCase.push("[0-9]");      // Numbers
+               // matchedCase.push("[a-z]");     // Lowercase Alphabates
 
-<html >
-   <head>
+                // Check the conditions
+                var ctr = 0;
+                for (var i = 0; i < matchedCase.length; i++) {
+                    if (new RegExp(matchedCase[i]).test(password)) {
+                        ctr++;
+                    }
+                }
+                // Display it
+                var color = "";
+                var strength = "";
+                switch (ctr) {
+                    case 0:
+                    case 1:
+                    case 2:
+                        strength = "Very Weak";
+                        color = "red";
+                        break;
+                    case 3:
+                        strength = "Medium";
+                        color = "orange";
+                        break;
+                    case 4:
+                        strength = "Strong";
+                        color = "green";
+                        break;
+                }
+                document.getElementById("msg").innerHTML = strength;
+                document.getElementById("msg").style.color = color;
+            }
+            function checkeq()
+            {
+               var color = "red";
+                var strength = "No match!";
+                if(document.getElementById("con").value==document.getElementById("pas").value)
+                {
+                   color="green";
+                   strength="Match!";
+                }
+
+               document.getElementById("msg1").innerHTML = strength;
+                document.getElementById("msg1").style.color = color;
+
+            }
   
-      <link media="all" href="https://pxltheme.com/wp/bako/wp-content/cache/autoptimize/css/autoptimize_b98fe647c7bf321ab61734b41f007e11.css" rel="stylesheet" />
-      <title>Srinag marni</title>
+function check(){
+var n=document.getElementById("name").value;
+var a=document.getElementById("age").value;
+var g=document.getElementsByName("g");
+var y=document.getElementById("Yob").value;
+var A=document.getElementById("ad").value;
+var m=document.getElementById("mn").value;
+var e=document.getElementById("E").value;
+var p=document.getElementById("pas").value;
+var c=document.getElementById("con").value;
+var pasc = /^(?=.*[\d])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,16}$/;
+var nc=/^[a-zA-Z]{3,10}$/;
+if(n=="")
+{
+alert("name field is empty!");
+
+name.focus();
+return false;
+
+}
+else{
+
+
+if(!nc.test(n))
+{
+alert("name field use only alphabets!");
+document.getElementById("Name").value="";
+name.focus();
+return false;
+
+}
+
+
+}
+if(n.length<3 || n.length>10)
+{
+alert("name field length 3 to 10!");
+document.getElementById("Name").value="";
+name.focus();
+return false;
+
+}
+if(a=="")
+{
+alert("age field is empty!");
+age.focus();
+return false;
+}
+else
+{
+if(!(a>=20  && a<=80))
+{
+alert("age must be 20 to 80!");
+age.focus();
+return false;
+}
+}
+if ( (g[0].checked == false ) && ( g[1].checked == false ) && ( g[2].checked == false ))
+{
+alert ( "Please choose gender" );
+return false;
+}
+if(y=="")
+   {
+       alert("Year of birth field empty");
+	   Yob.focus();
+       return false;
+   }
+   else if(2020-a!=y)
+	{
+		alert("enter exact year of birth")
+		Yob.focus();
+		document.getElementById("Yob").value="";
+		return false;
+}
+if(A=="")
+   {
+       alert("Address field empty");
+       return false;
+   }
+   if(m=="")
+{
+alert("mobile no field is empty!");
+mn.focus();
+return false;
+
+}
+else{
+for(var i=0;i<m.length;i++)
+{
+if(!(m.charAt(i)>='0' && m.charAt(i)<='9'))
+{
+alert("enter valid mobile no");
+document.getElementById("mn").value="";
+mn.focus();
+return false;
+
+}
+}
+if(m.length!=10)
+{
+   alert("enter 10 digit mobile no");
+document.getElementById("mn").value="";
+mn.focus();
+return false;
+}
+}
+if(e=="")
+    {
+        alert("email field empty");
+        return false;
+   }
+   else
+   {
+        var at=e.indexOf("@");
+        var dot=e.lastIndexOf(".");
+        if (at<1 || dot<at+2 || dot+2>=e.length)
+        {
+            alert("Not a valid e-mail address");
+            return false;
+    }
+   }
+   document.getElementById("u").value=document.getElementById("E").value;
+   if(p=="")
+    {
+        alert("password field is empty")
+        pas.focus()
+        return false;
+	}
+   if (!pasc.test(p))
+   {
+       alert("enter pwd with minimum one number,special symbol and 8 or more characters")
+       pas.focus();
+       return false;
+	}
+   if (c=="")
+    {
+        alert("please confirm your password");
+        con.focus();
+        return false;
+	}
+    if(c!=p)
+    {
+        alert("not matching , please enter right passowrd")
+        con.focus();
+        return false;
+	} 
+alert("sucess");
+return true;
+
+}
+function nc(){
+   
+               var color = "red";
+                var strength = "";
+                if(document.getElementById("name").value.length<3 || document.getElementById("name").value.length>10)
+                {
+                   strength="  name field length 3 to 10!";
+                }
+                 else strength="";
+               document.getElementById("nf").innerHTML = strength;
+                document.getElementById("nf").style.color = color;
+
+
+
+}
+function agc(){
+   
+   var color = "red";
+    var strength = "";
+    if(!(document.getElementById("age").value>=20 && document.getElementById("age").value<=80))
+    {
      
-      <link rel='stylesheet' id='bako-fonts-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A400%2C400i%2C600%2C600i%2C700%2C700i%7CPoppins%3A400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i&#038;ver=1.0.0' type='text/css' media='all' />
-      <link rel='stylesheet' id='elementor-global-css'  href='https://pxltheme.com/wp/bako/wp-content/cache/autoptimize/css/autoptimize_single_8d20a0fee59b2392d59a6b46fe11432c.css?ver=1580211727' type='text/css' media='all' />
-      <link rel='stylesheet' id='elementor-post-8-css'  href='https://pxltheme.com/wp/bako/wp-content/cache/autoptimize/css/autoptimize_single_942530f201a7fd5e7649dfff13944c9a.css?ver=1580211727' type='text/css' media='all' />
-      <link rel='stylesheet' id='google-fonts-1-css'  href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CPoppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7COpen+Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;ver=5.3.2' type='text/css' media='all' />
+
+
       
-   </head>
-   <body class="home page-template page-template-page-onepage page-template-page-onepage-php page page-id-8 elementor-default elementor-page elementor-page-8">
-      <div id="preloader">
-         <div class="outer">
-            <div class="spinner">
-               <div class="dot1"></div>
-               <div class="dot2"></div>
-            </div>
-         </div>
-      </div>
-      <div class="site-wrapper">
-         <div class="mobile-header py-2 px-3 mt-4">
-            <button class="menu-icon mr-2"> <span></span> <span></span> <span></span> </button> 
-            <a href="https://pxltheme.com/wp/bako/" class="logo">
-               <noscript><img src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/logo-1.png" alt="Bako Doe" class="circle" /></noscript>
-               <img src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20%20%22%3E%3C/svg%3E' data-src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/logo-1.png" alt="Bako Doe" class="lazyload circle" />
-            </a>
-            <a href="https://pxltheme.com/wp/bako/" class="site-title dot ml-2">Bako Doe</a>
-         </div>
-         <header class="left float-left shadow-dark" id="header">
-            <button type="button" class="close" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-            <div class="header-inner d-flex align-items-start flex-column">
-               <a href="https://pxltheme.com/wp/bako/">
-                  <noscript><img src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/logo-1.png" alt="Bako Doe" /></noscript>
-                  <img class="lazyload" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20%20%22%3E%3C/svg%3E' data-src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/logo-1.png" alt="Bako Doe" />
-               </a>
-               <a href="https://pxltheme.com/wp/bako/" class="site-title dot mt-3">Bako Doe</a> <span class="site-slogan">Web Developer</span>
-               <nav>
-                  <ul id="menu-one-page-menu" class="vertical-menu onepage-menu">
-                     <li id="menu-item-13" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13"><a href="#home"><i class="icon-home"></i>Home</a></li>
-                     <li id="menu-item-14" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14"><a href="#about"><i class="icon-user"></i>About</a></li>
-                     <li id="menu-item-15" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15"><a href="#services"><i class="icon-bulb"></i>Services</a></li>
-                     <li id="menu-item-16" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16"><a href="#resume"><i class="icon-graduation"></i>Resume</a></li>
-                     <li id="menu-item-17" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="#works"><i class="icon-grid"></i>Works</a></li>
-                     <li id="menu-item-18" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18"><a href="#blog"><i class="icon-pencil"></i>Blog</a></li>
-                     <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-19"><a href="#contact"><i class="icon-phone"></i>Contact</a></li>
-                  </ul>
-               </nav>
-               <div class="footer mt-auto">
-                  <ul class="social-icons list-inline">
-                     <li class="list-inline-item"> <a href="http://facebook.com/username" target="_blank"> <i class="fab fa-facebook-f"></i> </a></li>
-                     <li class="list-inline-item"> <a href="http://twitter.com/username" target="_blank"> <i class="fab fa-twitter"></i> </a></li>
-                     <li class="list-inline-item"> <a href="http://instagram.com/username" target="_blank"> <i class="fab fa-instagram"></i> </a></li>
-                     <li class="list-inline-item"> <a href="http://youtube.com/username" target="_blank"> <i class="fab fa-youtube"></i> </a></li>
-                     <li class="list-inline-item"> <a href="http://dribbble.com/username" target="_blank"> <i class="fab fa-dribbble"></i> </a></li>
-                  </ul>
-                  <span class="copyright"> © 2019 Bako Theme </span>
-               </div>
-            </div>
-         </header>
-         <main class="content float-right">
-            <div data-elementor-type="wp-post" data-elementor-id="8" class="elementor elementor-8" data-elementor-settings="[]">
-               <div class="elementor-inner">
-                  <div class="elementor-section-wrap">
-                     <section class="elementor-element elementor-element-bf95336 elementor-section-height-min-height shadow-dark elementor-section-boxed elementor-section-height-default elementor-section-items-middle elementor-section elementor-top-section" data-id="bf95336" data-element_type="section" id="home" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-background-overlay"></div>
-                        <div class="elementor-container elementor-column-gap-default">
-                           <div class="elementor-row">
-                              <div class="elementor-element elementor-element-f2438ee elementor-column elementor-col-100 elementor-top-column" data-id="f2438ee" data-element_type="column">
-                                 <div class="elementor-column-wrap  elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                       <div class="elementor-element elementor-element-3f69f3f elementor-widget__width-auto elementor-widget elementor-widget-heading" data-id="3f69f3f" data-element_type="widget" data-widget_type="heading.default">
-                                          <div class="elementor-widget-container">
-                                             <h1 class="elementor-heading-title elementor-size-default">I’m Bako Doe<span class="dot"></span></h1>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-c15fb9f elementor-widget elementor-widget-text-editor" data-id="c15fb9f" data-element_type="widget" data-widget_type="text-editor.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="elementor-text-editor elementor-clearfix">
-                                                <p>He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.</p>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-62c7ffb elementor-widget__width-auto elementor-widget elementor-widget-bako-button" data-id="62c7ffb" data-element_type="widget" data-widget_type="bako-button.default">
-                                          <div class="elementor-widget-container"> <a href="#" class="btn btn-default btn-lg"> <i class="icon-grid"></i> View Portfolio </a></div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-113d6f7 elementor-widget__width-auto elementor-widget elementor-widget-bako-button" data-id="113d6f7" data-element_type="widget" data-widget_type="bako-button.default">
-                                          <div class="elementor-widget-container"> <a href="#" class="btn btn-border-light btn-lg"> <i class="icon-envelope"></i> Hire Me </a></div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </section>
-                     <section class="elementor-element elementor-element-6d67668 shadow-blue elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="6d67668" data-element_type="section" id="about" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-container elementor-column-gap-default">
-                           <div class="elementor-row">
-                              <div class="elementor-element elementor-element-ede915b elementor-column elementor-col-100 elementor-top-column" data-id="ede915b" data-element_type="column">
-                                 <div class="elementor-column-wrap  elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                       <div class="elementor-element elementor-element-fd830f6 elementor-widget elementor-widget-bako-section-title" data-id="fd830f6" data-element_type="widget" data-widget_type="bako-section-title.default">
-                                          <div class="elementor-widget-container">
-                                             <h3 class="section-title">About Me</h3>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-a93180a elementor-widget elementor-widget-spacer" data-id="a93180a" data-element_type="widget" data-widget_type="spacer.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="elementor-spacer">
-                                                <div class="elementor-spacer-inner"></div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <section class="elementor-element elementor-element-28fff55 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="28fff55" data-element_type="section">
-                                          <div class="elementor-container elementor-column-gap-default">
-                                             <div class="elementor-row">
-                                                <div class="elementor-element elementor-element-d65c8d2 elementor-column elementor-col-33 elementor-inner-column" data-id="d65c8d2" data-element_type="column">
-                                                   <div class="elementor-column-wrap  elementor-element-populated">
-                                                      <div class="elementor-widget-wrap">
-                                                         <div class="elementor-element elementor-element-d5bd739 elementor-widget elementor-widget-image" data-id="d5bd739" data-element_type="widget" data-widget_type="image.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="elementor-image">
-                                                                  <noscript><img width="150" height="150" src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/about.png" class="attachment-large size-large" alt="" /></noscript>
-                                                                  <img width="150" height="150" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20150%20150%22%3E%3C/svg%3E' data-src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/about.png" class="lazyload attachment-large size-large" alt="" />
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="elementor-element elementor-element-cad0286 elementor-column elementor-col-66 elementor-inner-column" data-id="cad0286" data-element_type="column">
-                                                   <div class="elementor-column-wrap  elementor-element-populated">
-                                                      <div class="elementor-widget-wrap">
-                                                         <div class="elementor-element elementor-element-9c6553d elementor-widget elementor-widget-heading" data-id="9c6553d" data-element_type="widget" data-widget_type="heading.default">
-                                                            <div class="elementor-widget-container">
-                                                               <h2 class="elementor-heading-title elementor-size-default">Hello,</h2>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-3737e0f elementor-widget elementor-widget-spacer" data-id="3737e0f" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="elementor-spacer">
-                                                                  <div class="elementor-spacer-inner"></div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-9d2dba6 elementor-widget elementor-widget-text-editor" data-id="9d2dba6" data-element_type="widget" data-widget_type="text-editor.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="elementor-text-editor elementor-clearfix">
-                                                                  <p>I am Bako Doe, web developer from London, United Kingdom. I have rich experience in web site design and building and customization, also I am good at wordpress.</p>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-042711a elementor-widget elementor-widget-spacer" data-id="042711a" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="elementor-spacer">
-                                                                  <div class="elementor-spacer-inner"></div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-7688d38 elementor-widget elementor-widget-html" data-id="7688d38" data-element_type="widget" data-widget_type="html.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="row">
-                                                                  <div class="col-md-6">
-                                                                     <p class="mb-2">Name: <span class="text-dark">Bako Doe</span></p>
-                                                                     <p class="mb-0">Birthday: <span class="text-dark">14 August, 1990</span></p>
-                                                                  </div>
-                                                                  <div class="col-md-6 mt-2 mt-md-0 mt-sm-2">
-                                                                     <p class="mb-2">Location: <span class="text-dark">London, UK</span></p>
-                                                                     <p class="mb-0">Email: <span class="text-dark">hello@bako.com</span></p>
-                                                                  </div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-e2cbf88 elementor-widget elementor-widget-spacer" data-id="e2cbf88" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="elementor-spacer">
-                                                                  <div class="elementor-spacer-inner"></div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-7c95bda elementor-widget__width-auto elementor-widget elementor-widget-bako-button" data-id="7c95bda" data-element_type="widget" data-widget_type="bako-button.default">
-                                                            <div class="elementor-widget-container"> <a href="" class="btn btn-default "> <i class="icon-cloud-download"></i> Download CV </a></div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-b436955 elementor-widget__width-auto elementor-widget elementor-widget-bako-button" data-id="b436955" data-element_type="widget" data-widget_type="bako-button.default">
-                                                            <div class="elementor-widget-container"> <a href="#" class="btn btn-alt "> <i class="icon-envelope"></i> Hire Me </a></div>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </section>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </section>
-                     <section class="elementor-element elementor-element-5db37a3 shadow-blue elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="5db37a3" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-container elementor-column-gap-default">
-                           <div class="elementor-row">
-                              <div class="elementor-element elementor-element-beac6dc elementor-column elementor-col-100 elementor-top-column" data-id="beac6dc" data-element_type="column">
-                                 <div class="elementor-column-wrap  elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                       <div class="elementor-element elementor-element-b29a76a elementor-widget elementor-widget-bako-section-title" data-id="b29a76a" data-element_type="widget" data-widget_type="bako-section-title.default">
-                                          <div class="elementor-widget-container">
-                                             <h3 class="section-title">My skills</h3>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-686750c elementor-widget elementor-widget-spacer" data-id="686750c" data-element_type="widget" data-widget_type="spacer.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="elementor-spacer">
-                                                <div class="elementor-spacer-inner"></div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-3695189 elementor-widget elementor-widget-text-editor" data-id="3695189" data-element_type="widget" data-widget_type="text-editor.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="elementor-text-editor elementor-clearfix">
-                                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-55337b5 elementor-widget elementor-widget-spacer" data-id="55337b5" data-element_type="widget" data-widget_type="spacer.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="elementor-spacer">
-                                                <div class="elementor-spacer-inner"></div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <section class="elementor-element elementor-element-5c34dc1 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="5c34dc1" data-element_type="section">
-                                          <div class="elementor-container elementor-column-gap-no">
-                                             <div class="elementor-row">
-                                                <div class="elementor-element elementor-element-68da637 elementor-column elementor-col-50 elementor-inner-column" data-id="68da637" data-element_type="column">
-                                                   <div class="elementor-column-wrap  elementor-element-populated">
-                                                      <div class="elementor-widget-wrap">
-                                                         <div class="elementor-element elementor-element-d20b90f elementor-widget elementor-widget-bako-skill" data-id="d20b90f" data-element_type="widget" data-widget_type="bako-skill.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="skill-item">
-                                                                  <div class="skill-info clearfix">
-                                                                     <h4 class="float-left mb-3 mt-0">WordPress</h4>
-                                                                     <span class="float-right">85%</span>
-                                                                  </div>
-                                                                  <div class="progress">
-                                                                     <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85"></div>
-                                                                  </div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-5ea9c25 elementor-widget elementor-widget-spacer" data-id="5ea9c25" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="elementor-spacer">
-                                                                  <div class="elementor-spacer-inner"></div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-8f71e07 elementor-widget elementor-widget-bako-skill" data-id="8f71e07" data-element_type="widget" data-widget_type="bako-skill.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="skill-item">
-                                                                  <div class="skill-info clearfix">
-                                                                     <h4 class="float-left mb-3 mt-0">jQuery</h4>
-                                                                     <span class="float-right">60%</span>
-                                                                  </div>
-                                                                  <div class="progress">
-                                                                     <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"></div>
-                                                                  </div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="elementor-element elementor-element-c7591be elementor-column elementor-col-50 elementor-inner-column" data-id="c7591be" data-element_type="column">
-                                                   <div class="elementor-column-wrap  elementor-element-populated">
-                                                      <div class="elementor-widget-wrap">
-                                                         <div class="elementor-element elementor-element-5379ebd elementor-widget elementor-widget-spacer" data-id="5379ebd" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="elementor-spacer">
-                                                                  <div class="elementor-spacer-inner"></div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-7dcfddf elementor-widget elementor-widget-bako-skill" data-id="7dcfddf" data-element_type="widget" data-widget_type="bako-skill.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="skill-item">
-                                                                  <div class="skill-info clearfix">
-                                                                     <h4 class="float-left mb-3 mt-0">HTML &amp; CSS</h4>
-                                                                     <span class="float-right">90%</span>
-                                                                  </div>
-                                                                  <div class="progress">
-                                                                     <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90"></div>
-                                                                  </div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-7a4459b elementor-widget elementor-widget-spacer" data-id="7a4459b" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="elementor-spacer">
-                                                                  <div class="elementor-spacer-inner"></div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-a2ed665 elementor-widget elementor-widget-bako-skill" data-id="a2ed665" data-element_type="widget" data-widget_type="bako-skill.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="skill-item">
-                                                                  <div class="skill-info clearfix">
-                                                                     <h4 class="float-left mb-3 mt-0">Sketch</h4>
-                                                                     <span class="float-right">70%</span>
-                                                                  </div>
-                                                                  <div class="progress">
-                                                                     <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"></div>
-                                                                  </div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </section>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </section>
-                     <section class="elementor-element elementor-element-54a51a7 shadow-dark elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="54a51a7" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-background-overlay"></div>
-                        <div class="elementor-container elementor-column-gap-default">
-                           <div class="elementor-row">
-                              <div class="elementor-element elementor-element-835a2ca elementor-column elementor-col-25 elementor-top-column" data-id="835a2ca" data-element_type="column">
-                                 <div class="elementor-column-wrap  elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                       <div class="elementor-element elementor-element-cd48783 elementor-widget elementor-widget-bako-icon" data-id="cd48783" data-element_type="widget" data-widget_type="bako-icon.default">
-                                          <div class="elementor-widget-container"> <i class="icon-like icon-circle"></i></div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-be08f9e elementor-widget elementor-widget-counter" data-id="be08f9e" data-element_type="widget" data-widget_type="counter.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="elementor-counter">
-                                                <div class="elementor-counter-number-wrapper"> <span class="elementor-counter-number-prefix"></span> <span class="elementor-counter-number" data-duration="2000" data-to-value="157" data-from-value="0">0</span> <span class="elementor-counter-number-suffix"></span></div>
-                                                <div class="elementor-counter-title">Projects completed</div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="elementor-element elementor-element-2a079eb elementor-column elementor-col-25 elementor-top-column" data-id="2a079eb" data-element_type="column">
-                                 <div class="elementor-column-wrap  elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                       <div class="elementor-element elementor-element-7502e5c elementor-widget elementor-widget-bako-icon" data-id="7502e5c" data-element_type="widget" data-widget_type="bako-icon.default">
-                                          <div class="elementor-widget-container"> <i class="icon-cup icon-circle"></i></div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-a1a75df elementor-widget elementor-widget-counter" data-id="a1a75df" data-element_type="widget" data-widget_type="counter.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="elementor-counter">
-                                                <div class="elementor-counter-number-wrapper"> <span class="elementor-counter-number-prefix"></span> <span class="elementor-counter-number" data-duration="2000" data-to-value="2765" data-from-value="0">0</span> <span class="elementor-counter-number-suffix"></span></div>
-                                                <div class="elementor-counter-title">Cup of coffee</div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="elementor-element elementor-element-55b6a90 elementor-column elementor-col-25 elementor-top-column" data-id="55b6a90" data-element_type="column">
-                                 <div class="elementor-column-wrap  elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                       <div class="elementor-element elementor-element-66b1512 elementor-widget elementor-widget-bako-icon" data-id="66b1512" data-element_type="widget" data-widget_type="bako-icon.default">
-                                          <div class="elementor-widget-container"> <i class="icon-emotsmile icon-circle"></i></div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-188e405 elementor-widget elementor-widget-counter" data-id="188e405" data-element_type="widget" data-widget_type="counter.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="elementor-counter">
-                                                <div class="elementor-counter-number-wrapper"> <span class="elementor-counter-number-prefix"></span> <span class="elementor-counter-number" data-duration="2000" data-to-value="350" data-from-value="0">0</span> <span class="elementor-counter-number-suffix"></span></div>
-                                                <div class="elementor-counter-title">Happy customers</div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="elementor-element elementor-element-24a682b elementor-column elementor-col-25 elementor-top-column" data-id="24a682b" data-element_type="column">
-                                 <div class="elementor-column-wrap  elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                       <div class="elementor-element elementor-element-1e4e7e4 elementor-widget elementor-widget-bako-icon" data-id="1e4e7e4" data-element_type="widget" data-widget_type="bako-icon.default">
-                                          <div class="elementor-widget-container"> <i class="icon-trophy icon-circle"></i></div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-6ebd00a elementor-widget elementor-widget-counter" data-id="6ebd00a" data-element_type="widget" data-widget_type="counter.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="elementor-counter">
-                                                <div class="elementor-counter-number-wrapper"> <span class="elementor-counter-number-prefix"></span> <span class="elementor-counter-number" data-duration="2000" data-to-value="29" data-from-value="0">0</span> <span class="elementor-counter-number-suffix"></span></div>
-                                                <div class="elementor-counter-title">Awards won</div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </section>
-                     <section class="elementor-element elementor-element-d37343a shadow-blue elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="d37343a" data-element_type="section" id="services" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-container elementor-column-gap-default">
-                           <div class="elementor-row">
-                              <div class="elementor-element elementor-element-816c7b4 elementor-column elementor-col-100 elementor-top-column" data-id="816c7b4" data-element_type="column">
-                                 <div class="elementor-column-wrap  elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                       <div class="elementor-element elementor-element-f2334b4 elementor-widget elementor-widget-bako-section-title" data-id="f2334b4" data-element_type="widget" data-widget_type="bako-section-title.default">
-                                          <div class="elementor-widget-container">
-                                             <h3 class="section-title">Services</h3>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-bcb34d9 elementor-widget elementor-widget-spacer" data-id="bcb34d9" data-element_type="widget" data-widget_type="spacer.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="elementor-spacer">
-                                                <div class="elementor-spacer-inner"></div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <section class="elementor-element elementor-element-914e9ba elementor-section-full_width elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="914e9ba" data-element_type="section">
-                                          <div class="elementor-container elementor-column-gap-default">
-                                             <div class="elementor-row">
-                                                <div class="elementor-element elementor-element-6bf4694 elementor-column elementor-col-33 elementor-inner-column" data-id="6bf4694" data-element_type="column">
-                                                   <div class="elementor-column-wrap  elementor-element-populated">
-                                                      <div class="elementor-widget-wrap">
-                                                         <div class="elementor-element elementor-element-380f894 elementor-widget elementor-widget-bako-service" data-id="380f894" data-element_type="widget" data-widget_type="bako-service.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="service-item text-center">
-                                                                  <i class="icon-globe icon-simple"></i>
-                                                                  <h4 class="my-3">Development</h4>
-                                                                  <p class="mb-0">Lorem ipsum dolor sit amet consectetuer elit.</p>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-70fb438 elementor-widget elementor-widget-spacer" data-id="70fb438" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="elementor-spacer">
-                                                                  <div class="elementor-spacer-inner"></div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-420dd7c elementor-widget elementor-widget-bako-service" data-id="420dd7c" data-element_type="widget" data-widget_type="bako-service.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="service-item text-center">
-                                                                  <i class="icon-rocket icon-simple"></i>
-                                                                  <h4 class="my-3">SEO</h4>
-                                                                  <p class="mb-0">Lorem ipsum dolor sit amet consectetuer elit.</p>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="elementor-element elementor-element-e705638 elementor-column elementor-col-33 elementor-inner-column" data-id="e705638" data-element_type="column">
-                                                   <div class="elementor-column-wrap  elementor-element-populated">
-                                                      <div class="elementor-widget-wrap">
-                                                         <div class="elementor-element elementor-element-957bafc elementor-widget elementor-widget-bako-service" data-id="957bafc" data-element_type="widget" data-widget_type="bako-service.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="service-item text-center">
-                                                                  <i class="icon-chemistry icon-simple"></i>
-                                                                  <h4 class="my-3">Design</h4>
-                                                                  <p class="mb-0">Lorem ipsum dolor sit amet consectetuer elit.</p>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-2244cde elementor-widget elementor-widget-spacer" data-id="2244cde" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="elementor-spacer">
-                                                                  <div class="elementor-spacer-inner"></div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-c43c1f2 elementor-widget elementor-widget-bako-service" data-id="c43c1f2" data-element_type="widget" data-widget_type="bako-service.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="service-item text-center">
-                                                                  <i class="icon-note icon-simple"></i>
-                                                                  <h4 class="my-3">Copy Write</h4>
-                                                                  <p class="mb-0">Lorem ipsum dolor sit amet consectetuer elit.</p>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="elementor-element elementor-element-3892869 elementor-column elementor-col-33 elementor-inner-column" data-id="3892869" data-element_type="column">
-                                                   <div class="elementor-column-wrap  elementor-element-populated">
-                                                      <div class="elementor-widget-wrap">
-                                                         <div class="elementor-element elementor-element-62d1dc7 elementor-widget elementor-widget-bako-service" data-id="62d1dc7" data-element_type="widget" data-widget_type="bako-service.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="service-item text-center">
-                                                                  <i class="icon-directions icon-simple"></i>
-                                                                  <h4 class="my-3">Advertising</h4>
-                                                                  <p class="mb-0">Lorem ipsum dolor sit amet consectetuer elit.</p>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-e88a901 elementor-widget elementor-widget-spacer" data-id="e88a901" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="elementor-spacer">
-                                                                  <div class="elementor-spacer-inner"></div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-7b53ecb elementor-widget elementor-widget-bako-service" data-id="7b53ecb" data-element_type="widget" data-widget_type="bako-service.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="service-item text-center">
-                                                                  <i class="icon-bubbles icon-simple"></i>
-                                                                  <h4 class="my-3">Support</h4>
-                                                                  <p class="mb-0">Lorem ipsum dolor sit amet consectetuer elit.</p>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </section>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </section>
-                     <section class="elementor-element elementor-element-6035891 shadow-blue elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="6035891" data-element_type="section" id="resume" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-container elementor-column-gap-default">
-                           <div class="elementor-row">
-                              <div class="elementor-element elementor-element-622d1cb elementor-column elementor-col-100 elementor-top-column" data-id="622d1cb" data-element_type="column">
-                                 <div class="elementor-column-wrap  elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                       <div class="elementor-element elementor-element-2430684 elementor-widget elementor-widget-bako-section-title" data-id="2430684" data-element_type="widget" data-widget_type="bako-section-title.default">
-                                          <div class="elementor-widget-container">
-                                             <h3 class="section-title">Experience</h3>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-8c19699 elementor-widget elementor-widget-spacer" data-id="8c19699" data-element_type="widget" data-widget_type="spacer.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="elementor-spacer">
-                                                <div class="elementor-spacer-inner"></div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-dc80888 elementor-widget elementor-widget-bako-timeline" data-id="dc80888" data-element_type="widget" data-widget_type="bako-timeline.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="timeline">
-                                                <div class="entry">
-                                                   <div class="title"> <span>2019 - Present</span></div>
-                                                   <div class="body">
-                                                      <h4 class="mt-0">Academic Degree</h4>
-                                                      <p>Lorem ipsum dolor sit amet consectetuer adipiscing elit aenean commodo ligula eget dolor aenean massa.</p>
-                                                   </div>
-                                                </div>
-                                                <div class="entry">
-                                                   <div class="title"> <span>2018 - 2015</span></div>
-                                                   <div class="body">
-                                                      <h4 class="mt-0">Bachelor’s Degree</h4>
-                                                      <p>Lorem ipsum dolor sit amet consectetuer adipiscing elit aenean commodo ligula eget dolor aenean massa.</p>
-                                                   </div>
-                                                </div>
-                                                <div class="entry">
-                                                   <div class="title"> <span>2015 - 2012</span></div>
-                                                   <div class="body">
-                                                      <h4 class="mt-0">Honours Degree</h4>
-                                                      <p>Lorem ipsum dolor sit amet consectetuer adipiscing elit aenean commodo ligula eget dolor aenean massa.</p>
-                                                   </div>
-                                                </div>
-                                                <span class="timeline-line"></span>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </section>
-                     <section class="elementor-element elementor-element-03637ba shadow-blue elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="03637ba" data-element_type="section" id="works" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-container elementor-column-gap-default">
-                           <div class="elementor-row">
-                              <div class="elementor-element elementor-element-9884b88 elementor-column elementor-col-100 elementor-top-column" data-id="9884b88" data-element_type="column">
-                                 <div class="elementor-column-wrap  elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                       <div class="elementor-element elementor-element-96946c1 elementor-widget elementor-widget-bako-section-title" data-id="96946c1" data-element_type="widget" data-widget_type="bako-section-title.default">
-                                          <div class="elementor-widget-container">
-                                             <h3 class="section-title">Portfolio</h3>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-f39685f elementor-widget elementor-widget-spacer" data-id="f39685f" data-element_type="widget" data-widget_type="spacer.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="elementor-spacer">
-                                                <div class="elementor-spacer-inner"></div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-8496847 elementor-widget elementor-widget-bako-portfolio" data-id="8496847" data-element_type="widget" data-widget_type="bako-portfolio.default">
-                                          <div class="elementor-widget-container">
-                                             <ul class="portfolio-filter list-inline">
-                                                <li class="current list-inline-item" data-filter="*">All Projects</li>
-                                                <li class="list-inline-item" data-filter=".branding">Branding</li>
-                                                <li class="list-inline-item" data-filter=".creative">Creative</li>
-                                                <li class="list-inline-item" data-filter=".design">Design</li>
-                                                <li class="list-inline-item" data-filter=".video">Video</li>
-                                             </ul>
-                                             <div class="pf-filter-wrapper mb-4">
-                                                <select class="portfolio-filter-mobile">
-                                                   <option value="*">All Projects</option>
-                                                   <option value=".video">Video</option>
-                                                </select>
-                                             </div>
-                                             <div class="row portfolio-wrapper">
-                                                <div class="col-md-4 col-sm-6 grid-item branding creative ">
-                                                   <a href="https://pxltheme.com/wp/bako/portfolio/iphone-xs/">
-                                                      <div class="portfolio-item">
-                                                         <div class="details">
-                                                            <h4 class="title">iPhone XS</h4>
-                                                            <span class='term'>Branding</span><span class='term'>Creative</span>
-                                                         </div>
-                                                         <span class="plus-icon">+</span>
-                                                         <div class="thumb">
-                                                            <noscript><img width="420" height="315" src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1-1.jpg" class="attachment-425x315 size-425x315 wp-post-image" alt="" srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1-1.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1-1-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1-1-768x576.jpg 768w" sizes="(max-width: 420px) 100vw, 420px" /></noscript>
-                                                            <img width="420" height="315" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20420%20315%22%3E%3C/svg%3E' data-src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1-1.jpg" class="lazyload attachment-425x315 size-425x315 wp-post-image" alt="" data-srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1-1.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1-1-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1-1-768x576.jpg 768w" data-sizes="(max-width: 420px) 100vw, 420px" />
-                                                            <div class="mask"></div>
-                                                         </div>
-                                                      </div>
-                                                   </a>
-                                                </div>
-                                                <div class="col-md-4 col-sm-6 grid-item branding design ">
-                                                   <a href="https://pxltheme.com/wp/bako/portfolio/apple-earpod/">
-                                                      <div class="portfolio-item">
-                                                         <div class="details">
-                                                            <h4 class="title">Apple Earpod</h4>
-                                                            <span class='term'>Branding</span><span class='term'>Design</span>
-                                                         </div>
-                                                         <span class="plus-icon">+</span>
-                                                         <div class="thumb">
-                                                            <noscript><img width="420" height="315" src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2-1.jpg" class="attachment-425x315 size-425x315 wp-post-image" alt="" srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2-1.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2-1-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2-1-768x576.jpg 768w" sizes="(max-width: 420px) 100vw, 420px" /></noscript>
-                                                            <img width="420" height="315" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20420%20315%22%3E%3C/svg%3E' data-src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2-1.jpg" class="lazyload attachment-425x315 size-425x315 wp-post-image" alt="" data-srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2-1.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2-1-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2-1-768x576.jpg 768w" data-sizes="(max-width: 420px) 100vw, 420px" />
-                                                            <div class="mask"></div>
-                                                         </div>
-                                                      </div>
-                                                   </a>
-                                                </div>
-                                                <div class="col-md-4 col-sm-6 grid-item creative video ">
-                                                   <a href="https://pxltheme.com/wp/bako/portfolio/work-space/">
-                                                      <div class="portfolio-item">
-                                                         <div class="details">
-                                                            <h4 class="title">Work Space</h4>
-                                                            <span class='term'>Creative</span><span class='term'>Video</span>
-                                                         </div>
-                                                         <span class="plus-icon">+</span>
-                                                         <div class="thumb">
-                                                            <noscript><img width="420" height="315" src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3-1.jpg" class="attachment-425x315 size-425x315 wp-post-image" alt="" srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3-1.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3-1-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3-1-768x576.jpg 768w" sizes="(max-width: 420px) 100vw, 420px" /></noscript>
-                                                            <img width="420" height="315" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20420%20315%22%3E%3C/svg%3E' data-src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3-1.jpg" class="lazyload attachment-425x315 size-425x315 wp-post-image" alt="" data-srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3-1.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3-1-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3-1-768x576.jpg 768w" data-sizes="(max-width: 420px) 100vw, 420px" />
-                                                            <div class="mask"></div>
-                                                         </div>
-                                                      </div>
-                                                   </a>
-                                                </div>
-                                                <div class="col-md-4 col-sm-6 grid-item design ">
-                                                   <a href="https://pxltheme.com/wp/bako/portfolio/playstation/">
-                                                      <div class="portfolio-item">
-                                                         <div class="details">
-                                                            <h4 class="title">PlayStation</h4>
-                                                            <span class='term'>Design</span>
-                                                         </div>
-                                                         <span class="plus-icon">+</span>
-                                                         <div class="thumb">
-                                                            <noscript><img width="420" height="315" src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/4.jpg" class="attachment-425x315 size-425x315 wp-post-image" alt="" srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/4.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/4-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/4-768x576.jpg 768w" sizes="(max-width: 420px) 100vw, 420px" /></noscript>
-                                                            <img width="420" height="315" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20420%20315%22%3E%3C/svg%3E' data-src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/4.jpg" class="lazyload attachment-425x315 size-425x315 wp-post-image" alt="" data-srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/4.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/4-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/4-768x576.jpg 768w" data-sizes="(max-width: 420px) 100vw, 420px" />
-                                                            <div class="mask"></div>
-                                                         </div>
-                                                      </div>
-                                                   </a>
-                                                </div>
-                                                <div class="col-md-4 col-sm-6 grid-item branding video ">
-                                                   <a href="https://pxltheme.com/wp/bako/portfolio/iphone-x-2/">
-                                                      <div class="portfolio-item">
-                                                         <div class="details">
-                                                            <h4 class="title">Pen Mockup</h4>
-                                                            <span class='term'>Branding</span><span class='term'>Video</span>
-                                                         </div>
-                                                         <span class="plus-icon">+</span>
-                                                         <div class="thumb">
-                                                            <noscript><img width="420" height="315" src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/5.jpg" class="attachment-425x315 size-425x315 wp-post-image" alt="" srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/5.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/5-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/5-768x576.jpg 768w" sizes="(max-width: 420px) 100vw, 420px" /></noscript>
-                                                            <img width="420" height="315" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20420%20315%22%3E%3C/svg%3E' data-src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/5.jpg" class="lazyload attachment-425x315 size-425x315 wp-post-image" alt="" data-srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/5.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/5-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/5-768x576.jpg 768w" data-sizes="(max-width: 420px) 100vw, 420px" />
-                                                            <div class="mask"></div>
-                                                         </div>
-                                                      </div>
-                                                   </a>
-                                                </div>
-                                                <div class="col-md-4 col-sm-6 grid-item creative design ">
-                                                   <a href="https://pxltheme.com/wp/bako/portfolio/minimal-art/">
-                                                      <div class="portfolio-item">
-                                                         <div class="details">
-                                                            <h4 class="title">Minimal Art</h4>
-                                                            <span class='term'>Creative</span><span class='term'>Design</span>
-                                                         </div>
-                                                         <span class="plus-icon">+</span>
-                                                         <div class="thumb">
-                                                            <noscript><img width="420" height="315" src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/6.jpg" class="attachment-425x315 size-425x315 wp-post-image" alt="" srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/6.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/6-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/6-768x576.jpg 768w" sizes="(max-width: 420px) 100vw, 420px" /></noscript>
-                                                            <img width="420" height="315" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20420%20315%22%3E%3C/svg%3E' data-src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/6.jpg" class="lazyload attachment-425x315 size-425x315 wp-post-image" alt="" data-srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/6.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/6-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/6-768x576.jpg 768w" data-sizes="(max-width: 420px) 100vw, 420px" />
-                                                            <div class="mask"></div>
-                                                         </div>
-                                                      </div>
-                                                   </a>
-                                                </div>
-                                             </div>
-                                             <ul class="portfolio-pagination list-inline d-none">
-                                                <li class='list-inline-item'><span aria-current="page" class="page-numbers current">1</span></li>
-                                                <li class='list-inline-item'><a class="page-numbers" href="https://pxltheme.com/wp/bako/page/2/">2</a></li>
-                                             </ul>
-                                             <div class="load-more text-center mt-4"> <a href="javascript:" class="btn btn-default"><i class="fas fa-circle-notch"></i>Load more</a></div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </section>
-                     <section class="elementor-element elementor-element-76bd5a0 shadow-blue elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="76bd5a0" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-container elementor-column-gap-default">
-                           <div class="elementor-row">
-                              <div class="elementor-element elementor-element-7a849a5 elementor-column elementor-col-100 elementor-top-column" data-id="7a849a5" data-element_type="column">
-                                 <div class="elementor-column-wrap  elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                       <div class="elementor-element elementor-element-0e7d0ac elementor-widget elementor-widget-bako-section-title" data-id="0e7d0ac" data-element_type="widget" data-widget_type="bako-section-title.default">
-                                          <div class="elementor-widget-container">
-                                             <h3 class="section-title">Pricing table</h3>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-2a753a2 elementor-widget elementor-widget-spacer" data-id="2a753a2" data-element_type="widget" data-widget_type="spacer.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="elementor-spacer">
-                                                <div class="elementor-spacer-inner"></div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <section class="elementor-element elementor-element-2747f88 elementor-section-full_width elementor-section-content-middle elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="2747f88" data-element_type="section">
-                                          <div class="elementor-container elementor-column-gap-no">
-                                             <div class="elementor-row">
-                                                <div class="elementor-element elementor-element-099e1c6 elementor-column elementor-col-33 elementor-inner-column" data-id="099e1c6" data-element_type="column">
-                                                   <div class="elementor-column-wrap  elementor-element-populated">
-                                                      <div class="elementor-widget-wrap">
-                                                         <div class="elementor-element elementor-element-a68a87f elementor-widget elementor-widget-bako-price" data-id="a68a87f" data-element_type="widget" data-widget_type="bako-price.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="price-item text-center ">
-                                                                  <i class="price-icon icon-energy"></i> <span class="plan">Basic</span>
-                                                                  <h3 class="price"> <em>$</em> 14 <span>/mo</span></h3>
-                                                                  <div class="price-content">
-                                                                     <ul>
-                                                                        <li>Frontend Builder</li>
-                                                                        <li>Regular Support</li>
-                                                                        <li>1 Years of Updates</li>
-                                                                     </ul>
-                                                                  </div>
-                                                                  <a href="#" class="btn btn-default">Get Started</a>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="elementor-element elementor-element-8cc5046 elementor-column elementor-col-33 elementor-inner-column" data-id="8cc5046" data-element_type="column">
-                                                   <div class="elementor-column-wrap  elementor-element-populated">
-                                                      <div class="elementor-widget-wrap">
-                                                         <div class="elementor-element elementor-element-c53711f elementor-widget elementor-widget-bako-price" data-id="c53711f" data-element_type="widget" data-widget_type="bako-price.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="price-item text-center recommended">
-                                                                  <i class="price-icon icon-fire"></i> <span class="plan">Professional</span>
-                                                                  <h3 class="price"> <em>$</em> 41 <span>/mo</span></h3>
-                                                                  <div class="price-content">
-                                                                     <ul>
-                                                                        <li>Frontend Builder</li>
-                                                                        <li>Regular Support</li>
-                                                                        <li>2 Years of Updates</li>
-                                                                        <li>White Labeling</li>
-                                                                     </ul>
-                                                                  </div>
-                                                                  <a href="#" class="btn btn-default">Get Started</a>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="elementor-element elementor-element-b7157b3 elementor-column elementor-col-33 elementor-inner-column" data-id="b7157b3" data-element_type="column">
-                                                   <div class="elementor-column-wrap  elementor-element-populated">
-                                                      <div class="elementor-widget-wrap">
-                                                         <div class="elementor-element elementor-element-3912000 elementor-widget elementor-widget-bako-price" data-id="3912000" data-element_type="widget" data-widget_type="bako-price.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="price-item text-center ">
-                                                                  <i class="price-icon icon-rocket"></i> <span class="plan">Premium</span>
-                                                                  <h3 class="price"> <em>$</em> 99 <span>/mo</span></h3>
-                                                                  <div class="price-content">
-                                                                     <ul>
-                                                                        <li>Frontend Builder</li>
-                                                                        <li>Regular Support</li>
-                                                                        <li>1 Years of Updates</li>
-                                                                     </ul>
-                                                                  </div>
-                                                                  <a href="#" class="btn btn-default">Get Started</a>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </section>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </section>
-                     <section class="elementor-element elementor-element-dfcdc3c shadow-blue elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="dfcdc3c" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-container elementor-column-gap-default">
-                           <div class="elementor-row">
-                              <div class="elementor-element elementor-element-dad4586 elementor-column elementor-col-100 elementor-top-column" data-id="dad4586" data-element_type="column">
-                                 <div class="elementor-column-wrap  elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                       <div class="elementor-element elementor-element-22b3124 elementor-widget elementor-widget-bako-section-title" data-id="22b3124" data-element_type="widget" data-widget_type="bako-section-title.default">
-                                          <div class="elementor-widget-container">
-                                             <h3 class="section-title">Testimonials</h3>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-2760e3b elementor-widget elementor-widget-spacer" data-id="2760e3b" data-element_type="widget" data-widget_type="spacer.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="elementor-spacer">
-                                                <div class="elementor-spacer-inner"></div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-7805ba1 elementor-widget elementor-widget-bako-testimonial" data-id="7805ba1" data-element_type="widget" data-widget_type="bako-testimonial.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="row testimonials-wrapper">
-                                                <div class="col-md-6">
-                                                   <div class="testimonial-item">
-                                                      <span class="symbol"><i class="fas fa-quote-left"></i></span>
-                                                      <p>I enjoy working with the theme and learn so much. You guys make the process fun and interesting. Good luck!</p>
-                                                      <div class="testimonial-details">
-                                                         <div class="thumb">
-                                                            <noscript><img src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/customer-1.png" alt="customer-name" /></noscript>
-                                                            <img class="lazyload" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20%20%22%3E%3C/svg%3E' data-src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/customer-1.png" alt="customer-name" />
-                                                         </div>
-                                                         <div class="info">
-                                                            <h4>Helen Doe</h4>
-                                                            <span>Themeforest customer</span>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                   <div class="testimonial-item">
-                                                      <span class="symbol"><i class="fas fa-quote-left"></i></span>
-                                                      <p>I enjoy working with the theme and learn so much. You guys make the process fun and interesting. Good luck!</p>
-                                                      <div class="testimonial-details">
-                                                         <div class="thumb">
-                                                            <noscript><img src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/customer-2.png" alt="customer-name" /></noscript>
-                                                            <img class="lazyload" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20%20%22%3E%3C/svg%3E' data-src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/customer-2.png" alt="customer-name" />
-                                                         </div>
-                                                         <div class="info">
-                                                            <h4>Jane Doe</h4>
-                                                            <span>Themeforest customer</span>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                   <div class="testimonial-item">
-                                                      <span class="symbol"><i class="fas fa-quote-left"></i></span>
-                                                      <p>I enjoy working with the theme and learn so much. You guys make the process fun and interesting. Good luck!</p>
-                                                      <div class="testimonial-details">
-                                                         <div class="thumb">
-                                                            <noscript><img src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/customer-1.png" alt="customer-name" /></noscript>
-                                                            <img class="lazyload" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20%20%22%3E%3C/svg%3E' data-src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/customer-1.png" alt="customer-name" />
-                                                         </div>
-                                                         <div class="info">
-                                                            <h4>Helen Doe</h4>
-                                                            <span>Themeforest customer</span>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </section>
-                     <section class="elementor-element elementor-element-25748d4 shadow-dark elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="25748d4" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-background-overlay"></div>
-                        <div class="elementor-container elementor-column-gap-default">
-                           <div class="elementor-row">
-                              <div class="elementor-element elementor-element-1f880db elementor-column elementor-col-100 elementor-top-column" data-id="1f880db" data-element_type="column">
-                                 <div class="elementor-column-wrap  elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                       <div class="elementor-element elementor-element-ec182da elementor-widget elementor-widget-bako-clients" data-id="ec182da" data-element_type="widget" data-widget_type="bako-clients.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="clients-wrapper row">
-                                                <div class="col-md-3">
-                                                   <div class="client-item">
-                                                      <div class="inner">
-                                                         <noscript><img src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1.png" alt="client-name" /></noscript>
-                                                         <img class="lazyload" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20%20%22%3E%3C/svg%3E' data-src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1.png" alt="client-name" />
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                   <div class="client-item">
-                                                      <div class="inner">
-                                                         <noscript><img src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2.png" alt="client-name" /></noscript>
-                                                         <img class="lazyload" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20%20%22%3E%3C/svg%3E' data-src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2.png" alt="client-name" />
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                   <div class="client-item">
-                                                      <div class="inner">
-                                                         <noscript><img src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3.png" alt="client-name" /></noscript>
-                                                         <img class="lazyload" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20%20%22%3E%3C/svg%3E' data-src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3.png" alt="client-name" />
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                   <div class="client-item">
-                                                      <div class="inner">
-                                                         <noscript><img src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/4.png" alt="client-name" /></noscript>
-                                                         <img class="lazyload" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20%20%22%3E%3C/svg%3E' data-src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/4.png" alt="client-name" />
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                   <div class="client-item">
-                                                      <div class="inner">
-                                                         <noscript><img src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2.png" alt="client-name" /></noscript>
-                                                         <img class="lazyload" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20%20%22%3E%3C/svg%3E' data-src="http://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2.png" alt="client-name" />
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </section>
-                     <section class="elementor-element elementor-element-c2eb944 shadow-blue elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="c2eb944" data-element_type="section" id="blog" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-container elementor-column-gap-default">
-                           <div class="elementor-row">
-                              <div class="elementor-element elementor-element-2c202f3 elementor-column elementor-col-100 elementor-top-column" data-id="2c202f3" data-element_type="column">
-                                 <div class="elementor-column-wrap  elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                       <div class="elementor-element elementor-element-5760157 elementor-widget elementor-widget-bako-section-title" data-id="5760157" data-element_type="widget" data-widget_type="bako-section-title.default">
-                                          <div class="elementor-widget-container">
-                                             <h3 class="section-title">Recent posts</h3>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-5484565 elementor-widget elementor-widget-spacer" data-id="5484565" data-element_type="widget" data-widget_type="spacer.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="elementor-spacer">
-                                                <div class="elementor-spacer-inner"></div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-b0be048 elementor-widget elementor-widget-bako-posts" data-id="b0be048" data-element_type="widget" data-widget_type="bako-posts.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="row">
-                                                <div class="col-md-4">
-                                                   <div class="blog-item">
-                                                      <div class="thumb">
-                                                         <a href="https://pxltheme.com/wp/bako/category/thoughts/"><span class="category">Thoughts</span></a>
-                                                         <a href="https://pxltheme.com/wp/bako/2019/04/08/the-truth-about-design-in-3-minutes/">
-                                                            <noscript><img width="243" height="182" src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1.jpg" class="attachment-245x182 size-245x182 wp-post-image" alt="" srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1-768x576.jpg 768w" sizes="(max-width: 243px) 100vw, 243px" /></noscript>
-                                                            <img width="243" height="182" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20243%20182%22%3E%3C/svg%3E' data-src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1.jpg" class="lazyload attachment-245x182 size-245x182 wp-post-image" alt="" data-srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/1-768x576.jpg 768w" data-sizes="(max-width: 243px) 100vw, 243px" />
-                                                         </a>
-                                                      </div>
-                                                      <h4 class="mt-4 mb-0"><a href="https://pxltheme.com/wp/bako/2019/04/08/the-truth-about-design-in-3-minutes/">The Truth About Design In 3 Minutes</a></h4>
-                                                      <ul class="list-inline meta mb-0 mt-3">
-                                                         <li class="list-inline-item">08 April 2019</li>
-                                                         <li class="list-inline-item"><a href="https://pxltheme.com/wp/bako/author/admin/" title="Posts by Bako Doe" rel="author">Bako Doe</a></li>
-                                                      </ul>
-                                                   </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <div class="blog-item">
-                                                      <div class="thumb">
-                                                         <a href="https://pxltheme.com/wp/bako/category/blog/"><span class="category">Blog</span></a>
-                                                         <a href="https://pxltheme.com/wp/bako/2019/04/08/the-ugly-truth-about-design/">
-                                                            <noscript><img width="243" height="182" src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2.jpg" class="attachment-245x182 size-245x182 wp-post-image" alt="" srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2-768x576.jpg 768w" sizes="(max-width: 243px) 100vw, 243px" /></noscript>
-                                                            <img width="243" height="182" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20243%20182%22%3E%3C/svg%3E' data-src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2.jpg" class="lazyload attachment-245x182 size-245x182 wp-post-image" alt="" data-srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/2-768x576.jpg 768w" data-sizes="(max-width: 243px) 100vw, 243px" />
-                                                         </a>
-                                                      </div>
-                                                      <h4 class="mt-4 mb-0"><a href="https://pxltheme.com/wp/bako/2019/04/08/the-ugly-truth-about-design/">The Ugly Truth About Design</a></h4>
-                                                      <ul class="list-inline meta mb-0 mt-3">
-                                                         <li class="list-inline-item">08 April 2019</li>
-                                                         <li class="list-inline-item"><a href="https://pxltheme.com/wp/bako/author/admin/" title="Posts by Bako Doe" rel="author">Bako Doe</a></li>
-                                                      </ul>
-                                                   </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                   <div class="blog-item">
-                                                      <div class="thumb">
-                                                         <a href="https://pxltheme.com/wp/bako/category/tech/"><span class="category">Tech</span></a>
-                                                         <a href="https://pxltheme.com/wp/bako/2019/04/07/hello-world/">
-                                                            <noscript><img width="243" height="182" src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3.jpg" class="attachment-245x182 size-245x182 wp-post-image" alt="" srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3-768x576.jpg 768w" sizes="(max-width: 243px) 100vw, 243px" /></noscript>
-                                                            <img width="243" height="182" src='data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20243%20182%22%3E%3C/svg%3E' data-src="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3.jpg" class="lazyload attachment-245x182 size-245x182 wp-post-image" alt="" data-srcset="https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3.jpg 800w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3-300x225.jpg 300w, https://pxltheme.com/wp/bako/wp-content/uploads/2019/04/3-768x576.jpg 768w" data-sizes="(max-width: 243px) 100vw, 243px" />
-                                                         </a>
-                                                      </div>
-                                                      <h4 class="mt-4 mb-0"><a href="https://pxltheme.com/wp/bako/2019/04/07/hello-world/">How To Become Better With UI Design</a></h4>
-                                                      <ul class="list-inline meta mb-0 mt-3">
-                                                         <li class="list-inline-item">07 April 2019</li>
-                                                         <li class="list-inline-item"><a href="https://pxltheme.com/wp/bako/author/admin/" title="Posts by Bako Doe" rel="author">Bako Doe</a></li>
-                                                      </ul>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </section>
-                     <section class="elementor-element elementor-element-688b47d shadow-blue elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="688b47d" data-element_type="section" id="contact" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                        <div class="elementor-container elementor-column-gap-default">
-                           <div class="elementor-row">
-                              <div class="elementor-element elementor-element-91ecb8a elementor-column elementor-col-100 elementor-top-column" data-id="91ecb8a" data-element_type="column">
-                                 <div class="elementor-column-wrap  elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-                                       <div class="elementor-element elementor-element-59c6a94 elementor-widget elementor-widget-bako-section-title" data-id="59c6a94" data-element_type="widget" data-widget_type="bako-section-title.default">
-                                          <div class="elementor-widget-container">
-                                             <h3 class="section-title">Get in touch</h3>
-                                          </div>
-                                       </div>
-                                       <div class="elementor-element elementor-element-e5d8fe5 elementor-widget elementor-widget-spacer" data-id="e5d8fe5" data-element_type="widget" data-widget_type="spacer.default">
-                                          <div class="elementor-widget-container">
-                                             <div class="elementor-spacer">
-                                                <div class="elementor-spacer-inner"></div>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <section class="elementor-element elementor-element-32eaa98 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="32eaa98" data-element_type="section">
-                                          <div class="elementor-container elementor-column-gap-default">
-                                             <div class="elementor-row">
-                                                <div class="elementor-element elementor-element-3f4ccb2 elementor-column elementor-col-33 elementor-inner-column" data-id="3f4ccb2" data-element_type="column">
-                                                   <div class="elementor-column-wrap  elementor-element-populated">
-                                                      <div class="elementor-widget-wrap">
-                                                         <div class="elementor-element elementor-element-fca804d elementor-widget elementor-widget-bako-contact" data-id="fca804d" data-element_type="widget" data-widget_type="bako-contact.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="contact-info">
-                                                                  <i class="icon-phone"></i>
-                                                                  <div class="details">
-                                                                     <h5>Phone</h5>
-                                                                     <span>+44 1632 960428</span>
-                                                                  </div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-c5713f0 elementor-widget elementor-widget-spacer" data-id="c5713f0" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="elementor-spacer">
-                                                                  <div class="elementor-spacer-inner"></div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-447fdff elementor-widget elementor-widget-bako-contact" data-id="447fdff" data-element_type="widget" data-widget_type="bako-contact.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="contact-info">
-                                                                  <i class="icon-envelope"></i>
-                                                                  <div class="details">
-                                                                     <h5>Email address</h5>
-                                                                     <span>hello@bako.com</span>
-                                                                  </div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-e7f3dd5 elementor-widget elementor-widget-spacer" data-id="e7f3dd5" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="elementor-spacer">
-                                                                  <div class="elementor-spacer-inner"></div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-972adfd elementor-widget elementor-widget-bako-contact" data-id="972adfd" data-element_type="widget" data-widget_type="bako-contact.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="contact-info">
-                                                                  <i class="icon-location-pin"></i>
-                                                                  <div class="details">
-                                                                     <h5>Location</h5>
-                                                                     <span>West Palm Beach, 4669 Travis Street</span>
-                                                                  </div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="elementor-element elementor-element-ad7c6f4 elementor-column elementor-col-66 elementor-inner-column" data-id="ad7c6f4" data-element_type="column">
-                                                   <div class="elementor-column-wrap  elementor-element-populated">
-                                                      <div class="elementor-widget-wrap">
-                                                         <div class="elementor-element elementor-element-503edda elementor-widget elementor-widget-spacer" data-id="503edda" data-element_type="widget" data-widget_type="spacer.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="elementor-spacer">
-                                                                  <div class="elementor-spacer-inner"></div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="elementor-element elementor-element-a477687 elementor-widget elementor-widget-shortcode" data-id="a477687" data-element_type="widget" data-widget_type="shortcode.default">
-                                                            <div class="elementor-widget-container">
-                                                               <div class="elementor-shortcode">
-                                                                  <div role="form" class="wpcf7" id="wpcf7-f82-p8-o1" lang="en-US" dir="ltr">
-                                                                     <div class="screen-reader-response"></div>
-                                                                     <form action="/wp/bako/#wpcf7-f82-p8-o1" method="post" class="wpcf7-form" novalidate="novalidate">
-                                                                        <div style="display: none;"> <input type="hidden" name="_wpcf7" value="82" /> <input type="hidden" name="_wpcf7_version" value="5.1.6" /> <input type="hidden" name="_wpcf7_locale" value="en_US" /> <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f82-p8-o1" /> <input type="hidden" name="_wpcf7_container_post" value="8" /></div>
-                                                                        <div class="row">
-                                                                           <div class="column col-md-6">
-                                                                              </p>
-                                                                              <div class="form-group"> <span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false" placeholder="Your name" /></span></div>
-                                                                              </p>
-                                                                           </div>
-                                                                           <div class="column col-md-6">
-                                                                              </p>
-                                                                              <div class="form-group"> <span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email form-control" aria-required="true" aria-invalid="false" placeholder="Email address" /></span></div>
-                                                                              </p>
-                                                                           </div>
-                                                                           <div class="column col-md-12">
-                                                                              </p>
-                                                                              <div class="form-group"> <span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false" placeholder="Subject" /></span></div>
-                                                                              </p>
-                                                                           </div>
-                                                                           <div class="column col-md-12">
-                                                                              </p>
-                                                                              <div class="form-group"> <span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" cols="40" rows="4" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required form-control" aria-required="true" aria-invalid="false" placeholder="Message..."></textarea></span></div>
-                                                                              </p>
-                                                                           </div>
-                                                                           </p>
-                                                                        </div>
-                                                                        <p><button type="submit" name="submit" id="submit" value="Submit" class="wpcf7-submit btn btn-default">Submit Message</button></p>
-                                                                        <div class="wpcf7-response-output wpcf7-display-none"></div>
-                                                                     </form>
-                                                                  </div>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </section>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </section>
-                  </div>
-               </div>
-            </div>
-         </main>
-      </div>
-      <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a> 
-      <noscript>
-         <style>.lazyload{display:none;}</style>
-      </noscript>
-      <script data-noptimize="1">window.lazySizesConfig=window.lazySizesConfig||{};window.lazySizesConfig.loadMode=1;</script><script async data-noptimize="1" src='https://pxltheme.com/wp/bako/wp-content/plugins/autoptimize/classes/external/js/lazysizes.min.js?ao_version=2.6.1'></script><script type='text/javascript'>var wpcf7 = {"apiSettings":{"root":"https:\/\/pxltheme.com\/wp\/bako\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"}};</script> <script type='text/javascript'>var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"version":"2.8.5","urls":{"assets":"https:\/\/pxltheme.com\/wp\/bako\/wp-content\/plugins\/elementor\/assets\/"},"settings":{"page":[],"general":{"elementor_global_image_lightbox":"yes"},"editorPreferences":[]},"post":{"id":8,"title":"Home Page","excerpt":""}};</script> <script defer src="https://pxltheme.com/wp/bako/wp-content/cache/autoptimize/js/autoptimize_a4745f425927b67e2c364e0028c3631d.js"></script>
-   </body>
+       strength="  age must be 20 to 80! & must be a no";
+    }
+else strength="";
+   document.getElementById("agf").innerHTML = strength;
+    document.getElementById("agf").style.color = color;
+
+
+}
+function yc(){
+   
+   var color = "red";
+    var strength = "";
+    if(2020-document.getElementById("age").value!=document.getElementById("Yob").value)
+    {
+     
+
+
+      
+       strength="  enter exact year of birth";
+    }
+else strength="";
+   document.getElementById("yf").innerHTML = strength;
+    document.getElementById("yf").style.color = color;
+
+
+}
+function mc(){
+   
+   var color = "red";
+    var strength = "";
+    if(document.getElementById("mn").value.length!=10)
+    {
+     
+
+
+      
+       strength="  enter a valid 10 digit mobile no!";
+    }
+else strength="";
+   document.getElementById("mf").innerHTML = strength;
+    document.getElementById("mf").style.color = color;
+
+
+}
+function ec(){
+   
+   var color = "red";
+    var strength = "";
+    var e=document.getElementById("E").value;
+    
+     
+      var at=e.indexOf("@");
+        var dot=e.lastIndexOf(".");
+        if (at<1 || dot<at+2 || dot+2>=e.length)
+       {
+
+      
+       strength="  enter a valid email id!";
+    }
+else strength="";
+   document.getElementById("ef").innerHTML = strength;
+    document.getElementById("ef").style.color = color;
+    document.getElementById("u").value=document.getElementById("E").value;
+}
+
+</script>
+<style>
+   body {
+    font-family:  arial;
+  
+background-image: linear-gradient(160deg, purple 25%, yellow 100%);
+
+}
+
+
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  margin: 0 auto;
+  background-color: white;
+  width: 70%;
+  border-radius: 10px;
+}
+.ui {
+color: red; 
+}
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;border-radius: 10px;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+th,td {text-align:left ;
+   padding: 10px 50px;
+}
+table{width: 100%;}
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #4CAF50;
+  background-image: linear-gradient(to right, #34e89e 0%, #0f3443 51%, #34e89e 100%);
+  
+    margin: 10px;
+    padding: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2); */
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    
+
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 49%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;background-position: right center;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+.btn-grad {background-image: linear-gradient(to right, #FC354C 0%, #0ABFBC 51%, #FC354C 100%);
+   
+    margin: 10px;
+    padding: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2); */
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    
+
+   padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 48%;
+  opacity: 0.9;}
+  .btn-grad:hover { background-position: right center; opacity: 1; }
+
+
+
+
+  /* The alert message box */
+.alert {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+
+</style>
+</head>
+<body>
+   <div class="container"
+   
+   >
+      <h1>Register</h1>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+<form name="reg"   onSubmit="return check();">
+<b>Name:<span id="nf"></span><input type="text" id="name" onkeyup="nc()"/><br>
+Age:<span id="agf"></span> <input type="text" id="age"onkeyup="agc()"/><br>
+year of birth:<span id="yf"></span><input type="text" id="Yob"onkeyup="yc()"/><br>
+<table>
+<tr><th>Gender : </th><th>Address : </th><th>State : </th></tr><tr><td>
+<input type="radio" name="g" value="male"/>Male
+<input type="radio" name="g" value="female"/>Female
+<input type="radio" name="g" value="other"/>Other</td>
+<td>
+<textarea rows="3" cols="15" id="ad" style="background-color: F1F1F1;border-radius: 10px;"></textarea></td><td>
+<select id="state">
+	
+   <option value="1">Kerala</option>
+   <option value="2" selected>Karnataka</option>
+   <option value="3">AndraPradesh</option>
+   <option value="4">Tamilnadu</option>
+ </select></td></tr></table>
+<br><br>
+
+
+Mobile no:<span id="mf"></span><input type="text" id="mn"onkeyup="mc()"/><br>
+
+Email:<span id="ef"></span><input type="text" id="E" size="25" onkeyup="ec()" /><br>
+
+
+U id:<input type="text" id="u" size="25"  /><br>
+Password:<span id="msg"></span><input type="text" id="pas" size="25" onkeyup="validatePassword(this.value);" /><br>
+Confirm password:<span id="msg1"></span><input type="text" id="con" size="25" onkeyup="checkeq()" /><br>
+
+<input type="button" value="Reset" onclick="location.reload();" class="btn-grad" />
+<input type="submit" value="Sign Up" class="registerbtn" /></b>
+</div>
+</form>
+</body>
 </html>
+
+
+
