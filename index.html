@@ -1,488 +1,125 @@
 <html>
-<head>
-<title>Register</title>
-<script >
-    function validatePassword(password) {
-                
-                // Do not show anything when the length of password is zero.
-                if (password.length == 0) {
-                    document.getElementById("msg").innerHTML = "";
-                    return;
-                }
-                // Create an array and push all possible values that you want in password
-                var matchedCase = [/[$@$!%*#?&]/,/[a-z]/,/[0-9]/,/[A-Z]/]
-               // new Array();
-               // matchedCase.push("[$@$!%*#?&]"); // Special Charector
-               // matchedCase.push("[A-Z]");      // Uppercase Alpabates
-               // matchedCase.push("[0-9]");      // Numbers
-               // matchedCase.push("[a-z]");     // Lowercase Alphabates
-
-                // Check the conditions
-                var ctr = 0;
-                for (var i = 0; i < matchedCase.length; i++) {
-                    if (new RegExp(matchedCase[i]).test(password)) {
-                        ctr++;
-                    }
-                }
-                // Display it
-                var color = "";
-                var strength = "";
-                switch (ctr) {
-                    case 0:
-                    case 1:
-                    case 2:
-                        strength = "Very Weak";
-                        color = "red";
-                        break;
-                    case 3:
-                        strength = "Medium";
-                        color = "orange";
-                        break;
-                    case 4:
-                        strength = "Strong";
-                        color = "green";
-                        break;
-                }
-                document.getElementById("msg").innerHTML = strength;
-                document.getElementById("msg").style.color = color;
+    <head>
+        <title>
+            Stock Price
+        </title>
+       
+        <style>
+            body{
+                background-image: linear-gradient(120deg,yellow 25%,lightgreen 75%);
             }
-            function checkeq()
-            {
-               var color = "red";
-                var strength = "No match!";
-                if(document.getElementById("con").value==document.getElementById("pas").value)
-                {
-                   color="green";
-                   strength="Match!";
-                }
-
-               document.getElementById("msg1").innerHTML = strength;
-                document.getElementById("msg1").style.color = color;
+            .container{
+                padding: 16px;
+    margin: 0 auto;
+    background-color: white;
+    width: 70%;
+    border-radius: 10px;
 
             }
-  
-function check(){
-var n=document.getElementById("name").value;
-var a=document.getElementById("age").value;
-var g=document.getElementsByName("g");
-var y=document.getElementById("Yob").value;
-var A=document.getElementById("ad").value;
-var m=document.getElementById("mn").value;
-var e=document.getElementById("E").value;
-var p=document.getElementById("pas").value;
-var c=document.getElementById("con").value;
-var pasc = /^(?=.*[\d])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,16}$/;
-var nc=/^[a-zA-Z]{3,10}$/;
-if(n=="")
-{
-alert("name field is empty!");
-
-name.focus();
-return false;
-
-}
-else{
-
-
-if(!nc.test(n))
-{
-alert("name field use only alphabets!");
-document.getElementById("Name").value="";
-name.focus();
-return false;
-
-}
-
-
-}
-if(n.length<3 || n.length>10)
-{
-alert("name field length 3 to 10!");
-document.getElementById("Name").value="";
-name.focus();
-return false;
-
-}
-if(a=="")
-{
-alert("age field is empty!");
-age.focus();
-return false;
-}
-else
-{
-if(!(a>=20  && a<=80))
-{
-alert("age must be 20 to 80!");
-age.focus();
-return false;
-}
-}
-if ( (g[0].checked == false ) && ( g[1].checked == false ) && ( g[2].checked == false ))
-{
-alert ( "Please choose gender" );
-return false;
-}
-if(y=="")
-   {
-       alert("Year of birth field empty");
-	   Yob.focus();
-       return false;
-   }
-   else if(2020-a!=y)
-	{
-		alert("enter exact year of birth")
-		Yob.focus();
-		document.getElementById("Yob").value="";
-		return false;
-}
-if(A=="")
-   {
-       alert("Address field empty");
-       return false;
-   }
-   if(m=="")
-{
-alert("mobile no field is empty!");
-mn.focus();
-return false;
-
-}
-else{
-for(var i=0;i<m.length;i++)
-{
-if(!(m.charAt(i)>='0' && m.charAt(i)<='9'))
-{
-alert("enter valid mobile no");
-document.getElementById("mn").value="";
-mn.focus();
-return false;
-
-}
-}
-if(m.length!=10)
-{
-   alert("enter 10 digit mobile no");
-document.getElementById("mn").value="";
-mn.focus();
-return false;
-}
-}
-if(e=="")
-    {
-        alert("email field empty");
-        return false;
-   }
-   else
-   {
-        var at=e.indexOf("@");
-        var dot=e.lastIndexOf(".");
-        if (at<1 || dot<at+2 || dot+2>=e.length)
-        {
-            alert("Not a valid e-mail address");
-            return false;
+        
+            /* Style The Dropdown Button */
+    .dropbtn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
     }
-   }
-   document.getElementById("u").value=document.getElementById("E").value;
-   if(p=="")
-    {
-        alert("password field is empty")
-        pas.focus()
-        return false;
-	}
-   if (!pasc.test(p))
-   {
-       alert("enter pwd with minimum one number,special symbol and 8 or more characters")
-       pas.focus();
-       return false;
-	}
-   if (c=="")
-    {
-        alert("please confirm your password");
-        con.focus();
-        return false;
-	}
-    if(c!=p)
-    {
-        alert("not matching , please enter right passowrd")
-        con.focus();
-        return false;
-	} 
-alert("sucess");
-return true;
-
-}
-function nc(){
-   
-               var color = "red";
-                var strength = "";
-                if(document.getElementById("name").value.length<3 || document.getElementById("name").value.length>10)
-                {
-                   strength="  name field length 3 to 10!";
-                }
-                 else strength="";
-               document.getElementById("nf").innerHTML = strength;
-                document.getElementById("nf").style.color = color;
-
-
-
-}
-function agc(){
-   
-   var color = "red";
-    var strength = "";
-    if(!(document.getElementById("age").value>=20 && document.getElementById("age").value<=80))
-    {
-     
-
-
-      
-       strength="  age must be 20 to 80! & must be a no";
-    }
-else strength="";
-   document.getElementById("agf").innerHTML = strength;
-    document.getElementById("agf").style.color = color;
-
-
-}
-function yc(){
-   
-   var color = "red";
-    var strength = "";
-    if(2020-document.getElementById("age").value!=document.getElementById("Yob").value)
-    {
-     
-
-
-      
-       strength="  enter exact year of birth";
-    }
-else strength="";
-   document.getElementById("yf").innerHTML = strength;
-    document.getElementById("yf").style.color = color;
-
-
-}
-function mc(){
-   
-   var color = "red";
-    var strength = "";
-    if(document.getElementById("mn").value.length!=10)
-    {
-     
-
-
-      
-       strength="  enter a valid 10 digit mobile no!";
-    }
-else strength="";
-   document.getElementById("mf").innerHTML = strength;
-    document.getElementById("mf").style.color = color;
-
-
-}
-function ec(){
-   
-   var color = "red";
-    var strength = "";
-    var e=document.getElementById("E").value;
     
-     
-      var at=e.indexOf("@");
-        var dot=e.lastIndexOf(".");
-        if (at<1 || dot<at+2 || dot+2>=e.length)
-       {
-
-      
-       strength="  enter a valid email id!";
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+      position: relative;
+      display: inline-block;
     }
-else strength="";
-   document.getElementById("ef").innerHTML = strength;
-    document.getElementById("ef").style.color = color;
-    document.getElementById("u").value=document.getElementById("E").value;
-}
-
-</script>
-<style>
-   body {
-    font-family:  arial;
-  
-background-image: linear-gradient(160deg, purple 25%, yellow 100%);
-
-}
-
-
-
-/* Add padding to containers */
-.container {
-  padding: 16px;
-  margin: 0 auto;
-  background-color: white;
-  width: 70%;
-  border-radius: 10px;
-}
-.ui {
-color: red; 
-}
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;border-radius: 10px;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/* Overwrite default styles of hr */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
-th,td {text-align:left ;
-   padding: 10px 50px;
-}
-table{width: 100%;}
-/* Set a style for the submit button */
-.registerbtn {
-  background-color: #4CAF50;
-  background-image: linear-gradient(to right, #34e89e 0%, #0f3443 51%, #34e89e 100%);
-  
-    margin: 10px;
-    padding: 30px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2); */
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
     
-
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 49%;
-  opacity: 0.9;
-}
-
-.registerbtn:hover {
-  opacity: 1;background-position: right center;
-}
-
-/* Add a blue text color to links */
-a {
-  color: dodgerblue;
-}
-
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
-  text-align: center;
-}
-.btn-grad {background-image: linear-gradient(to right, #FC354C 0%, #0ABFBC 51%, #FC354C 100%);
-   
-    margin: 10px;
-    padding: 30px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2); */
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
     
-
-   padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 48%;
-  opacity: 0.9;}
-  .btn-grad:hover { background-position: right center; opacity: 1; }
-
-
-
-
-  /* The alert message box */
-.alert {
-  padding: 20px;
-  background-color: #f44336; /* Red */
-  color: white;
-  margin-bottom: 15px;
-}
-
-/* The close button */
-.closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-/* When moving the mouse over the close button */
-.closebtn:hover {
-  color: black;
-}
-
-</style>
-</head>
-<body>
-   <div class="container"
-   
-   >
-      <h1>Register</h1>
-      <p>Please fill in this form to create an account.</p>
-      <hr>
-<form name="reg"   onSubmit="return check();">
-<b>Name:<span id="nf"></span><input type="text" id="name" onkeyup="nc()"/><br>
-Age:<span id="agf"></span> <input type="text" id="age"onkeyup="agc()"/><br>
-year of birth:<span id="yf"></span><input type="text" id="Yob"onkeyup="yc()"/><br>
-<table>
-<tr><th>Gender : </th><th>Address : </th><th>State : </th></tr><tr><td>
-<input type="radio" name="g" value="male"/>Male
-<input type="radio" name="g" value="female"/>Female
-<input type="radio" name="g" value="other"/>Other</td>
-<td>
-<textarea rows="3" cols="15" id="ad" style="background-color: F1F1F1;border-radius: 10px;"></textarea></td><td>
-<select id="state">
-	
-   <option value="1">Kerala</option>
-   <option value="2" selected>Karnataka</option>
-   <option value="3">AndraPradesh</option>
-   <option value="4">Tamilnadu</option>
- </select></td></tr></table>
-<br><br>
-
-
-Mobile no:<span id="mf"></span><input type="text" id="mn"onkeyup="mc()"/><br>
-
-Email:<span id="ef"></span><input type="text" id="E" size="25" onkeyup="ec()" /><br>
-
-
-U id:<input type="text" id="u" size="25"  /><br>
-Password:<span id="msg"></span><input type="text" id="pas" size="25" onkeyup="validatePassword(this.value);" /><br>
-Confirm password:<span id="msg1"></span><input type="text" id="con" size="25" onkeyup="checkeq()" /><br>
-
-<input type="button" value="Reset" onclick="location.reload();" class="btn-grad" />
-<input type="submit" value="Sign Up" class="registerbtn" /></b>
-</div>
-</form>
-</body>
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    /* Links inside the dropdown */
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {background-color: #f1f1f1}
+    
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+      background-color: #3e8e41;
+    }
+    h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 175px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+    p { color: #685206; font-family: 'Helvetica Neue', sans-serif; font-size: 14px; line-height: 24px; margin: 0 0 24px; text-align: justify; text-justify: inter-word; }
+        </style>
+    </head>
+    <body>
+        <div class="container"><center>       
+            <div class="dropdown">
+                <button class="dropbtn">Stocks</button>
+                <div class="dropdown-content">
+                  <a href="#a">Apple</a>
+                  <a href="#i">intel</a>
+                  <a href="#e">Ebay</a>
+                  <a href="#am">amazon</a>
+                </div>
+              </div>
+            </center>
+        </div>
+        <br>
+        <div class="container" id="a">
+            <h1>Apple Inc.</h1>
+            <img src="apple.png"><img src="apple1.png">
+            <p>Above indicates that for 825 days the market was bearish on Apple, while for 382 days the market was bullish, and it was neutral for 51 days.</p>
+            <img src="apple2.png"><img src="apple3.png">
+            <p>As we can observe, the data lines from all the above graphs are just above and below the first quartile, or within the 95% confidence interval. This will indicate the significance of the correlation. If the line is above or below the dotted line, not in between, we can say that the correlation is significant, and that the adjusted closed value is correlated to time. In all plots, we can see that in the first year, there is a correlation between stock price and time. we can not say that there are any significant values that show any correlation, and finally, towards the end, we can again see some significant values, and it would be beneficial to dive deeper into these observations.
+            </p>
+        </div>
+        <br>
+        <div class="container" id="i">
+            <h1>Intel Corporation</h1>
+            <img src="intel.png"><img src="intel1.png">
+            <p>Above indicates that for 825 days the market was bearish on Apple, while for 382 days the market was bullish, and it was neutral for 51 days.</p>
+            <img src="intel2.png"><img src="intel3.png">
+            <p>As we can observe, the data lines from all the above graphs are just above and below the first quartile, or within the 95% confidence interval. This will indicate the significance of the correlation. If the line is above or below the dotted line, not in between, we can say that the correlation is significant, and that the adjusted closed value is correlated to time. In all plots, we can see that in the first year, there is a correlation between stock price and time. we can not say that there are any significant values that show any correlation, and finally, towards the end, we can again see some significant values, and it would be beneficial to dive deeper into these observations.
+            </p>
+        </div>
+        <br>
+        <div class="container" id="e">
+            <h1>eBay Inc.</h1>
+            <img src="ebay.png"><img src="ebay1.png">
+            <p>Above indicates that for 825 days the market was bearish on Apple, while for 382 days the market was bullish, and it was neutral for 51 days.</p>
+            <img src="ebay2.png"><img src="ebay3.png">
+            <p>As we can observe, the data lines from all the above graphs are just above and below the first quartile, or within the 95% confidence interval. This will indicate the significance of the correlation. If the line is above or below the dotted line, not in between, we can say that the correlation is significant, and that the adjusted closed value is correlated to time. In all plots, we can see that in the first year, there is a correlation between stock price and time. we can not say that there are any significant values that show any correlation, and finally, towards the end, we can again see some significant values, and it would be beneficial to dive deeper into these observations.
+            </p>
+        </div>
+        <br>
+        <div class="container" id="am">
+            <h1>Amazon.com Inc.</h1>
+            <img src="amazon.png"><img src="amazon1.png">
+            <p>Above indicates that for 825 days the market was bearish on Apple, while for 382 days the market was bullish, and it was neutral for 51 days.</p>
+            <img src="amazon2.png"><img src="amazon3.png">
+            <p>As we can observe, the data lines from all the above graphs are just above and below the first quartile, or within the 95% confidence interval. This will indicate the significance of the correlation. If the line is above or below the dotted line, not in between, we can say that the correlation is significant, and that the adjusted closed value is correlated to time. In all plots, we can see that in the first year, there is a correlation between stock price and time. we can not say that there are any significant values that show any correlation, and finally, towards the end, we can again see some significant values, and it would be beneficial to dive deeper into these observations.
+            </p>
+        </div>
+    </body>
 </html>
 
 
 
+    
+    
